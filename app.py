@@ -22,7 +22,7 @@ app.secret_key = "threatlens-secret-key"
 # File Upload Configuration
 # ==========================================
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "/tmp/uploads"
 
 ALLOWED_EXTENSIONS = {
     "log",
