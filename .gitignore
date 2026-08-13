@@ -1,0 +1,25 @@
+venv/
+__pycache__/
+*.pyc
+.env
+
+uploads/
+logs/
+reports/
+runtime_results/
+
+cookies.txt
+upload_cookies.txt
+
+# Backup files anywhere in project
+**/*.backup*
+**/*.bak*
+**/*.before_*
+**/*_backup*
+**/*_before*
+*.pdf
+
+# Nested repositories
+attack_data/
+datasets/external/loghub/
+app.py.broken_*

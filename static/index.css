@@ -1,0 +1,1186 @@
+```css
+/* =========================================================
+   THREATLENS AI
+   Professional Cybersecurity Landing Page
+   Upload-Based Security Investigation
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(14, 165, 233, 0.10),
+            transparent 35%
+        ),
+        #070D18;
+
+    color: #F8FAFC;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+
+    background:
+        rgba(7, 13, 24, 0.88);
+
+    backdrop-filter: blur(16px);
+
+    border-bottom:
+        1px solid rgba(148, 163, 184, 0.12);
+}
+
+.nav-container {
+    width: 92%;
+    max-width: 1250px;
+    margin: auto;
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    color: #F8FAFC;
+
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: #38BDF8;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+
+    text-decoration: none;
+    color: #94A3B8;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #38BDF8;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #38BDF8;
+
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-dashboard {
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    color: #E0F2FE !important;
+
+    background:
+        rgba(14, 165, 233, 0.10);
+
+    border:
+        1px solid rgba(56, 189, 248, 0.25);
+}
+
+.nav-dashboard:hover {
+    background:
+        rgba(14, 165, 233, 0.18);
+
+    border-color:
+        rgba(56, 189, 248, 0.50);
+}
+
+.nav-dashboard::after {
+    display: none;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 92%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        105px 20px
+        95px;
+
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+
+    background:
+        rgba(14, 165, 233, 0.08);
+
+    filter: blur(90px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.hero-badge {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 15px;
+    margin-bottom: 25px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(14, 165, 233, 0.08);
+
+    border:
+        1px solid rgba(56, 189, 248, 0.22);
+
+    color: #7DD3FC;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    position: relative;
+
+    font-size:
+        clamp(44px, 6vw, 72px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 800;
+
+    color: #F8FAFC;
+}
+
+.hero h1 span {
+    color: #38BDF8;
+}
+
+.hero-title {
+    position: relative;
+
+    margin-top: 22px;
+
+    color: #CBD5E1;
+
+    font-size:
+        clamp(20px, 3vw, 29px);
+
+    font-weight: 600;
+}
+
+.hero-description {
+    position: relative;
+
+    max-width: 760px;
+
+    margin:
+        22px auto 0;
+
+    color: #94A3B8;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO BUTTON
+   ========================================================= */
+
+.hero-buttons {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 38px;
+
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    text-decoration: none;
+}
+
+.primary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 205px;
+
+    padding:
+        14px 24px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0284C7,
+            #2563EB
+        );
+
+    border:
+        1px solid rgba(56, 189, 248, 0.30);
+
+    box-shadow:
+        0 8px 30px
+        rgba(37, 99, 235, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 35px
+        rgba(37, 99, 235, 0.35);
+}
+
+
+/* =========================================================
+   HERO STATUS
+   ========================================================= */
+
+.hero-status {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 28px;
+
+    color: #64748B;
+
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22C55E;
+
+    box-shadow:
+        0 0 10px
+        rgba(34, 197, 94, 0.7);
+}
+
+
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+.analyzer-section,
+.features-section,
+.about-section {
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin:
+        0 auto 90px;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 42px;
+}
+
+.section-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #38BDF8;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    color: #F8FAFC;
+
+    font-size:
+        clamp(28px, 4vw, 40px);
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #64748B;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ANALYSIS GRID
+   Single Upload Card
+   ========================================================= */
+
+.analysis-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 760px);
+
+    justify-content: center;
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   UPLOAD CARD
+   ========================================================= */
+
+.analysis-card {
+    position: relative;
+
+    width: 100%;
+
+    padding: 32px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(11, 18, 32, 0.96)
+        );
+
+    border:
+        1px solid rgba(148, 163, 184, 0.13);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.analysis-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(56, 189, 248, 0.30);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    font-size: 21px;
+}
+
+.upload-icon {
+    background:
+        rgba(37, 99, 235, 0.12);
+
+    border:
+        1px solid rgba(37, 99, 235, 0.20);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+.card-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748B;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+}
+
+.card-header h3 {
+    color: #F8FAFC;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+.card-description {
+    margin-top: 12px;
+    margin-bottom: 25px;
+
+    color: #94A3B8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SUPPORTED FILES
+   ========================================================= */
+
+.supported-files {
+    margin-bottom: 25px;
+}
+
+.supported-files > span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #64748B;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.file-tags {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.file-tags span {
+    padding:
+        5px 9px;
+
+    border-radius: 6px;
+
+    background:
+        #111C2E;
+
+    border:
+        1px solid #243247;
+
+    color: #7DD3FC;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   UPLOAD FORM
+   ========================================================= */
+
+.analysis-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.analysis-form label {
+    margin-top: 5px;
+
+    color: #CBD5E1;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.analysis-form select {
+    width: 100%;
+
+    padding:
+        12px 14px;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    border:
+        1px solid #26354A;
+
+    background:
+        #0B1424;
+
+    color: #CBD5E1;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.analysis-form select:focus {
+    border-color: #38BDF8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.08);
+}
+
+
+/* =========================================================
+   FILE UPLOAD AREA
+   ========================================================= */
+
+.file-upload {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 135px;
+
+    border:
+        1px dashed #334155;
+
+    border-radius: 10px;
+
+    background:
+        rgba(15, 23, 42, 0.55);
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.file-upload:hover {
+    border-color: #38BDF8;
+
+    background:
+        rgba(14, 165, 233, 0.04);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.04);
+}
+
+.file-upload:focus-within {
+    border-color: #38BDF8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.08);
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+.file-upload-content {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    pointer-events: none;
+
+    text-align: center;
+}
+
+.file-upload-icon {
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.file-upload-content strong {
+    color: #CBD5E1;
+
+    font-size: 14px;
+}
+
+.file-upload-content small {
+    color: #64748B;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ANALYZE BUTTON
+   ========================================================= */
+
+.analyze-btn {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding:
+        13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0284C7,
+            #2563EB
+        );
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(37, 99, 235, 0.25);
+}
+
+.analyze-btn:active {
+    transform: translateY(0);
+}
+
+.analyze-btn:focus-visible {
+    outline: 2px solid #38BDF8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features-section {
+    padding-top: 20px;
+}
+
+.features-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.feature {
+    padding: 25px;
+
+    min-height: 210px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    border:
+        1px solid rgba(148, 163, 184, 0.11);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(56, 189, 248, 0.30);
+
+    background:
+        rgba(15, 23, 42, 0.95);
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(56, 189, 248, 0.08);
+
+    border:
+        1px solid rgba(56, 189, 248, 0.14);
+
+    font-size: 18px;
+}
+
+.feature h3 {
+    margin-bottom: 9px;
+
+    color: #E2E8F0;
+
+    font-size: 16px;
+}
+
+.feature p {
+    color: #64748B;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-section {
+    padding:
+        55px 0;
+
+    border-top:
+        1px solid rgba(148, 163, 184, 0.08);
+}
+
+.about-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.about-content h2 {
+    margin-bottom: 15px;
+
+    color: #F8FAFC;
+
+    font-size:
+        clamp(28px, 4vw, 38px);
+}
+
+.about-content > p {
+    color: #94A3B8;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.about-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 32px;
+}
+
+.about-stats div {
+    padding: 18px 10px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(15, 23, 42, 0.65);
+
+    border:
+        1px solid rgba(148, 163, 184, 0.09);
+}
+
+.about-stats strong {
+    display: block;
+
+    color: #38BDF8;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+.about-stats span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748B;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    margin-top: 30px;
+
+    border-top:
+        1px solid rgba(148, 163, 184, 0.10);
+
+    background:
+        #050A12;
+}
+
+.footer-content {
+    width: 92%;
+
+    max-width: 1200px;
+
+    min-height: 110px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.footer-logo {
+    color: #38BDF8;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+.footer-content p {
+    margin-top: 4px;
+
+    color: #475569;
+
+    font-size: 11px;
+}
+
+.footer-right {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 3px;
+
+    color: #475569;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .nav-container {
+        flex-direction: column;
+
+        padding:
+            18px 0;
+
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 14px;
+    }
+
+    .hero {
+        padding:
+            75px 10px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .primary {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .footer-content {
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding:
+            25px 0;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .analysis-card {
+        padding: 22px;
+    }
+
+    .card-header {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-title {
+        font-size: 19px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .file-upload {
+        min-height: 125px;
+    }
+
+}
+```

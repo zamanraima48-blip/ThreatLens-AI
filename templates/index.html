@@ -1,0 +1,501 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ThreatLens AI | Security Incident Investigation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            🛡️ <span>ThreatLens</span> AI
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="#features-section">Features</a>
+            </li>
+
+            <li>
+                <a href="#documentation">Documentation</a>
+            </li>
+
+            <li>
+                <a href="#about-section">About</a>
+            </li>
+
+            <li>
+                <a href="/dashboard" class="nav-dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-badge">
+        🔐 AI-Powered Security Operations
+    </div>
+
+    <h1>
+        Detect.
+        <span>Investigate.</span>
+        Respond.
+    </h1>
+
+    <p class="hero-title">
+        AI Powered Security Incident Investigation
+    </p>
+
+    <p class="hero-description">
+        Upload security logs to detect threats, extract IOCs,
+        map MITRE ATT&CK techniques, assess risk and generate
+        intelligent security insights.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="#upload-section"
+           class="primary">
+            🚀 Launch Investigation
+        </a>
+
+    </div>
+
+    <div class="hero-status">
+
+        <span class="status-dot"></span>
+
+        Threat monitoring system ready
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SECURITY ANALYZER ================= -->
+
+<section class="analyzer-section"
+         id="documentation">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SECURITY OPERATIONS
+        </span>
+
+        <h2>
+            Security Evidence Analyzer
+        </h2>
+
+        <p>
+            Upload your security evidence for automated investigation.
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= ANALYSIS GRID ================= -->
+
+    <div class="analysis-grid">
+
+
+        <!-- ================= UPLOAD CARD ================= -->
+
+        <div class="analysis-card"
+             id="upload-section">
+
+            <div class="card-icon upload-icon">
+                📂
+            </div>
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        FILE ANALYSIS
+                    </span>
+
+                    <h3>
+                        Upload Security Logs
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <p class="card-description">
+
+                Upload security evidence for automated
+                threat detection, IOC extraction, AI analysis
+                and MITRE ATT&CK mapping.
+
+            </p>
+
+
+
+            <!-- ================= SUPPORTED FILES ================= -->
+
+            <div class="supported-files">
+
+                <span>SUPPORTED</span>
+
+                <div class="file-tags">
+
+                    <span>.LOG</span>
+                    <span>.EVTX</span>
+                    <span>.CSV</span>
+                    <span>.TXT</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= UPLOAD FORM ================= -->
+
+            <form action="/upload"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  class="analysis-form">
+
+
+                <input type="hidden"
+                       name="redirect_to_dashboard"
+                       value="1">
+
+
+                <!-- LOG TYPE -->
+
+                <label for="log_type">
+                    Log Type
+                </label>
+
+
+                <select name="log_type"
+                        id="log_type"
+                        required>
+
+                    <option value="">
+                        Select log type
+                    </option>
+
+                    <option value="auth.log">
+                        Linux Authentication Log
+                    </option>
+
+                    <option value="syslog">
+                        Linux System Log
+                    </option>
+
+                    <option value="windows_event">
+                        Windows Event Log
+                    </option>
+
+                    <option value="csv">
+                        CSV Log
+                    </option>
+
+                </select>
+
+
+
+                <!-- SECURITY EVIDENCE -->
+
+                <label for="logfile">
+                    Security Evidence
+                </label>
+
+
+                <div class="file-upload">
+
+                    <input type="file"
+                           id="logfile"
+                           name="logfile"
+                           accept=".log,.txt,.csv,.evtx"
+                           required>
+
+
+                    <div class="file-upload-content">
+
+                        <span class="file-upload-icon">
+                            📁
+                        </span>
+
+                        <strong>
+                            Choose security log
+                        </strong>
+
+                        <small>
+                            LOG, TXT, CSV or EVTX
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ANALYZE BUTTON -->
+
+                <button class="analyze-btn"
+                        type="submit">
+
+                    <span>🔍</span>
+
+                    Upload & Analyze
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+    </div>
+    <!-- END ANALYSIS GRID -->
+
+
+
+</section>
+<!-- END SECURITY ANALYZER -->
+
+
+
+<!-- ================= PLATFORM CAPABILITIES ================= -->
+
+<section class="features-section"
+         id="features-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            PLATFORM CAPABILITIES
+        </span>
+
+        <h2>
+            Built for Security Investigation
+        </h2>
+
+        <p>
+            ThreatLens AI combines automated detection,
+            threat intelligence and AI-assisted investigation.
+        </p>
+
+    </div>
+
+
+
+    <div class="features-grid">
+
+
+        <!-- LOG ANALYSIS -->
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📂
+            </div>
+
+            <h3>
+                Log Analysis
+            </h3>
+
+            <p>
+                Analyze Linux, Windows Event and CSV security logs.
+            </p>
+
+        </div>
+
+
+
+        <!-- AI ANALYSIS -->
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3>
+                AI Analysis
+            </h3>
+
+            <p>
+                Generate intelligent incident analysis,
+                severity assessment and investigation summaries.
+            </p>
+
+        </div>
+
+
+
+        <!-- MITRE ATT&CK -->
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+            <h3>
+                MITRE ATT&CK
+            </h3>
+
+            <p>
+                Automatically map detected threats to
+                relevant MITRE ATT&CK techniques.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section"
+         id="about-section">
+
+
+    <div class="about-content">
+
+        <span class="section-label">
+            ABOUT THREATLENS
+        </span>
+
+
+        <h2>
+            Intelligent Security Investigation
+        </h2>
+
+
+        <p>
+
+            ThreatLens AI is a security incident investigation
+            platform designed to help analysts detect suspicious
+            activity, extract indicators of compromise, identify
+            attack techniques and understand security risks.
+
+        </p>
+
+
+
+        <div class="about-stats">
+
+            <div>
+                <strong>IOC</strong>
+                <span>Extraction</span>
+            </div>
+
+            <div>
+                <strong>AI</strong>
+                <span>Analysis</span>
+            </div>
+
+            <div>
+                <strong>MITRE</strong>
+                <span>Mapping</span>
+            </div>
+
+            <div>
+                <strong>RISK</strong>
+                <span>Assessment</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="footer-logo">
+                🛡️ ThreatLens AI
+            </div>
+
+            <p>
+                AI Powered Security Incident Investigation Platform
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <span>
+                ThreatLens AI v1.0
+            </span>
+
+            <span>
+                Security Operations Platform
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+</body>
+
+</html>
+```

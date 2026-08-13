@@ -1,0 +1,91 @@
+[
+    {
+        "technique_id": "T1110",
+        "technique": "Brute Force",
+        "tactic": "Credential Access",
+        "keywords": [
+            "brute force",
+            "failed password",
+            "authentication failures",
+            "password guessing",
+            "failed login"
+        ]
+    },
+    {
+        "technique_id": "T1078",
+        "technique": "Valid Accounts",
+        "tactic": "Defense Evasion",
+        "keywords": [
+            "valid account",
+            "successful login"
+        ]
+    },
+    {
+        "technique_id": "T1059",
+        "technique": "Command and Scripting Interpreter",
+        "tactic": "Execution",
+        "keywords": [
+            "command",
+            "script",
+            "shell"
+        ]
+    },
+    {
+        "technique_id": "T1190",
+        "technique": "Exploit Public-Facing Application",
+        "tactic": "Initial Access",
+        "keywords": [
+            "sql injection",
+            "sql injection attempt",
+            "web exploit",
+            "xss",
+            "xss attempt"
+        ]
+    },
+    {
+        "technique_id": "T1595",
+        "technique": "Active Scanning",
+        "tactic": "Reconnaissance",
+        "keywords": [
+            "web scanning",
+            "web scanning attempt",
+            "scanning",
+            "admin discovery",
+            "directory discovery"
+        ]
+    },
+    {
+        "technique_id": "T1068",
+        "technique": "Exploitation for Privilege Escalation",
+        "tactic": "Privilege Escalation",
+        "keywords": [
+            "privilege escalation",
+            "privilege escalation attempt",
+            "sudo",
+            "root access"
+        ]
+    },
+    {
+        "technique_id": "T1204",
+        "technique": "User Execution",
+        "tactic": "Execution",
+        "keywords": [
+            "user execution",
+            "malware execution",
+            "malicious malware process",
+            "trojan executable process",
+            "launched malicious"
+        ]
+    },
+    {
+        "technique_id": "T1486",
+        "technique": "Data Encrypted for Impact",
+        "tactic": "Impact",
+        "keywords": [
+            "ransomware",
+            "encrypted files",
+            "encrypt files",
+            "data encrypted for impact"
+        ]
+    }
+]

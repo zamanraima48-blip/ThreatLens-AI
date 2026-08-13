@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```html
+<title>ThreatLens AI | SOC Dashboard</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='dashboard.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">🛡</div>
+
+        <div>
+            <h2>ThreatLens</h2>
+            <span>AI SECURITY</span>
+        </div>
+    </div>
+
+
+    <div class="status-box">
+
+        <span class="status-dot"></span>
+
+        <div>
+            <strong>THREAT MONITORING</strong>
+            <small>System protected</small>
+        </div>
+
+    </div>
+
+
+    <nav class="side-nav">
+
+        <a href="/" class="active">
+            <span>▣</span>
+            Dashboard
+        </a>
+
+        <a href="/">
+            <span>⌕</span>
+            Investigate
+        </a>
+
+        <a href="#">
+            <span>◈</span>
+            Incidents
+        </a>
+
+        <a href="#">
+            <span>◉</span>
+            MITRE ATT&CK
+        </a>
+
+        <a href="/generate_report">
+            <span>▤</span>
+            Reports
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="mini-card">
+
+            <span>AI ENGINE</span>
+
+            <strong>ONLINE</strong>
+
+            <div class="progress">
+                <div></div>
+            </div>
+
+        </div>
+
+        <a href="/" class="back-home">
+            ← Back to Investigation
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="eyebrow">
+                SECURITY OPERATIONS CENTER
+            </p>
+
+            <h1>
+                Threat Intelligence Dashboard
+            </h1>
+
+            <p class="subtitle">
+                Real-time security incident analysis powered by ThreatLens AI
+            </p>
+
+        </div>
+
+
+        <div class="top-actions">
+
+
+
+            <div class="user-circle">
+                AI
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= KPI CARDS ================= -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card blue">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    TOTAL LOGS
+                </span>
+
+                <div class="stat-icon">
+                    ◫
+                </div>
+
+            </div>
+
+            <h2>
+                {{ data.total_lines }}
+            </h2>
+
+            <p>
+                Analyzed security events
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card purple">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    TOTAL IOCs
+                </span>
+
+                <div class="stat-icon">
+                    ◈
+                </div>
+
+            </div>
+
+            <h2>
+                {{ data.total_iocs }}
+            </h2>
+
+            <p>
+                Indicators extracted
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card red">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    THREATS
+                </span>
+
+                <div class="stat-icon">
+                    ⚠
+                </div>
+
+            </div>
+
+            <h2>
+                {{ data.total_threats }}
+            </h2>
+
+            <p>
+                Security threats detected
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card orange">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    RISK SCORE
+                </span>
+
+                <div class="stat-icon">
+                    ◉
+                </div>
+
+            </div>
+
+            <h2>
+                {{ data.risk_score }}
+                <small>/100</small>
+            </h2>
+
+            <p>
+                {{ data.severity }} risk level
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ANALYZED FILE ================= -->
+
+<section class="panel analyzed-file-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <span class="panel-kicker">
+                CURRENT ANALYSIS
+            </span>
+
+            <h3>
+                {{ data.filename }}
+            </h3>
+
+            <p>
+                Source file currently analyzed by ThreatLens AI
+            </p>
+
+        </div>
+
+        <div class="file-status">
+            ANALYSIS COMPLETE
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ANALYTICS ================= -->
+
+<section class="dashboard-grid">
+
+
+        <!-- THREAT ACTIVITY -->
+
+        <div class="panel large-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        SECURITY ANALYTICS
+                    </span>
+
+                    <h3>
+                        Threat Activity
+                    </h3>
+
+                </div>
+
+                <div class="panel-badge">
+                    LIVE DATA
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="threatChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RISK GAUGE -->
+
+        <div class="panel risk-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        RISK ANALYSIS
+                    </span>
+
+                    <h3>
+                        Current Risk
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-gauge">
+
+                <div class="gauge-circle">
+
+                    <div class="gauge-inner">
+
+                        <strong>
+                            {{ data.risk_score }}
+                        </strong>
+
+                        <span>
+                            RISK SCORE
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-status">
+
+                <span class="risk-dot"></span>
+
+                {{ data.severity }} Risk
+
+            </div>
+
+
+            <p class="risk-description">
+
+                {{ data.risk_explanation }}
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SECOND ROW ================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- ATTACK DISTRIBUTION -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        THREAT INTELLIGENCE
+                    </span>
+
+                    <h3>
+                        Attack Distribution
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="donut-wrapper">
+
+                <canvas id="attackChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MITRE -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        ATTACK FRAMEWORK
+                    </span>
+
+                    <h3>
+                        MITRE ATT&CK
+                    </h3>
+
+                </div>
+
+                <span class="mitre-count">
+                    {{ data.mitre_count }} techniques
+                </span>
+
+            </div>
+
+
+            <div class="mitre-list">
+
+                {% if data.mitre_mapping %}
+
+                    {% for item in data.mitre_mapping[:6] %}
+
+                    <div class="mitre-item">
+
+                        <div class="mitre-icon">
+                            🎯
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                {{ item.get("Technique", item.get("technique", item.get("name", "Unknown Technique"))) }}
+                            </strong>
+
+                            <small>
+                                {{ item.get("Technique ID", item.get("technique_id", item.get("id", "MITRE ATT&CK"))) }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="empty-state">
+                        No MITRE techniques detected.
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= AI SUMMARY ================= -->
+
+    <section class="panel ai-panel">
+
+        <div class="ai-glow"></div>
+
+        <div class="ai-header">
+
+            <div class="ai-icon">
+                🤖
+            </div>
+
+            <div>
+
+                <span class="panel-kicker">
+                    ARTIFICIAL INTELLIGENCE
+                </span>
+
+                <h3>
+                    AI Security Summary
+                </h3>
+
+            </div>
+
+            <div class="ai-status">
+                AI ANALYZED
+            </div>
+
+        </div>
+
+
+        <div class="ai-content">
+
+            <div class="classification">
+
+                <span>
+                    THREAT CLASSIFICATION
+                </span>
+
+                <strong>
+                    {{ data.threat_classification }}
+                </strong>
+
+            </div>
+
+
+            <div class="ai-summary-text">
+
+                <p>
+                    {{ data.executive_summary }}
+                </p>
+
+                <p class="explanation">
+                    {{ data.threat_explanation }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RECENT INCIDENTS ================= -->
+
+    <section class="panel incidents-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-kicker">
+                    SECURITY EVENTS
+                </span>
+
+                <h3>
+                    Recent Incidents
+                </h3>
+
+            </div>
+
+            <span class="incident-count">
+                {{ data.total_threats }} detected
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>THREAT</th>
+                        <th>SEVERITY</th>
+                        <th>STATUS</th>
+                        <th>EVENT</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for threat in data.threats[:8] %}
+
+                    <tr>
+
+                        <td>
+
+                            <div class="threat-name">
+
+                                <span class="threat-indicator"></span>
+
+                                {{ threat.get("type", "Unknown Threat") }}
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="severity-badge
+                            {{ threat.get('severity', 'Medium')|lower }}">
+
+                                {{ threat.get("severity", "Medium") }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-badge">
+                                DETECTED
+                            </span>
+
+                        </td>
+
+
+                        <td class="event-text">
+
+                            {{ threat.get("log", "Security event detected") }}
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="4" class="empty-table">
+                            No incidents detected.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <span>
+            ThreatLens AI v1.0
+        </span>
+
+        <span>
+            AI Powered Security Incident Investigation
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- ================= CHART DATA ================= -->
+
+<script>
+
+    /* ================= THREAT DATA ================= */
+
+    const threats = [
+        {% for threat in data.threats %}
+        {
+            type: {{ threat.get("type", "Unknown Threat") | tojson }},
+            severity: {{ threat.get("severity", "Unknown") | tojson }},
+            message: {{ threat.get("message", "") | tojson }}
+        },
+        {% endfor %}
+    ];
+
+
+    /* =====================================================
+       ATTACK DISTRIBUTION
+       ===================================================== */
+
+    const threatCounts = {};
+
+    threats.forEach(function(threat) {
+
+        const type = threat.type || "Unknown Threat";
+
+        threatCounts[type] =
+            (threatCounts[type] || 0) + 1;
+
+    });
+
+    const attackLabels = Object.keys(threatCounts);
+    const attackValues = Object.values(threatCounts);
+
+
+    /* =====================================================
+/* =====================================================
+   UNIQUE SECURITY EVENT ACTIVITY
+   ===================================================== */
+
+/*
+ * Build Threat Activity from the actual threat records.
+ * Multiple classifications of the same source event are
+ * counted only once when the original message is available.
+ */
+
+const dailyActivity = {};
+const seenEvents = new Set();
+
+threats.forEach(function(threat, index) {
+
+    if (!threat || typeof threat !== "object") {
+        return;
+    }
+
+    const message = String(
+        threat.message ||
+        threat.raw ||
+        threat.log ||
+        threat.event ||
+        ""
+    ).trim();
+
+    /*
+     * Use a timestamp supplied by the backend when available.
+     */
+    const timestamp =
+        threat.timestamp ||
+        threat.datetime ||
+        threat.date ||
+        "";
+
+      let dateLabel = "";
+
+      /*
+       * First use a backend timestamp when it is valid.
+       */
+      if (timestamp) {
+
+          const parsedDate = new Date(timestamp);
+
+          if (!isNaN(parsedDate.getTime())) {
+
+              dateLabel =
+                  parsedDate.getFullYear() + "-" +
+                  String(parsedDate.getMonth() + 1).padStart(2, "0") + "-" +
+                  String(parsedDate.getDate()).padStart(2, "0");
+
+          }
+      }
+
+      /*
+       * Parse Linux Syslog format:
+       *
+       * Jun 14 15:16:01 combo sshd(pam_unix)[19939]: ...
+       *
+       * Syslog records normally do not contain a year.
+       */
+      if (!dateLabel && message) {
+
+          const syslogMatch = message.match(
+              /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})\s+\d{2}:\d{2}:\d{2}/i
+          );
+
+          if (syslogMatch) {
+
+              const month = syslogMatch[1];
+              const day = syslogMatch[2];
+
+              dateLabel =
+                  month + " " +
+                  day;
+          }
+      }
+
+      /*
+       * Support comma-separated date formats for other log sources.
+       */
+      if (!dateLabel && message) {
+
+          const parts = message.split(",");
+
+          if (parts.length >= 4) {
+
+              const day = parts[0].trim();
+              const month = parts[1].trim();
+              const possibleYear = parts[2].trim();
+
+              if (
+                  /^\d{1,2}$/.test(day) &&
+                  /^[A-Za-z]{3,9}$/.test(month) &&
+                  /^\d{4}$/.test(possibleYear)
+              ) {
+
+                  dateLabel =
+                      day + " " +
+                      month + " " +
+                      possibleYear;
+              }
+          }
+      }
+
+
+    /*
+     * If no valid date exists, still count the threat.
+     */
+    if (!dateLabel) {
+        dateLabel = "Detected Threats";
+    }
+
+    /*
+     * Same original message = same source event.
+     * If no message exists, count the individual threat.
+     */
+    const eventKey =
+        message ||
+        ("threat-" + index);
+
+    if (seenEvents.has(eventKey)) {
+        return;
+    }
+
+    seenEvents.add(eventKey);
+
+    dailyActivity[dateLabel] =
+        (dailyActivity[dateLabel] || 0) + 1;
+
+});
+
+
+const activityLabels =
+    Object.keys(dailyActivity);
+
+const activityValues =
+    Object.values(dailyActivity);
+
+
+/*
+ * ================= THREAT ACTIVITY CHART =================
+ */
+
+const threatCanvas =
+    document.getElementById("threatChart");
+
+if (threatCanvas) {
+
+    if (activityLabels.length === 0) {
+
+        const parent = threatCanvas.parentElement;
+
+        parent.innerHTML = `
+            <div class="empty-chart-state">
+                No threat activity detected
+            </div>
+        `;
+
+    } else {
+
+        new Chart(threatCanvas, {
+
+            type: "line",
+
+            data: {
+
+                labels: activityLabels,
+
+                datasets: [{
+
+                    label: "Unique Security Events",
+
+                    data: activityValues,
+
+                    tension: 0.25,
+
+                    fill: true,
+
+                    pointRadius: 3,
+
+                    pointHoverRadius: 5,
+
+                    borderWidth: 2
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            label: function(context) {
+
+                                return " Events: " +
+                                       context.parsed.y;
+
+                            }
+
+                        }
+
+                    }
+
+                },
+
+                scales: {
+
+                    x: {
+
+                        type: "category",
+
+                        offset: false,
+
+                        ticks: {
+
+                            autoSkip: true,
+
+                            maxTicksLimit: 8,
+
+                            maxRotation: 0,
+
+                            minRotation: 0
+
+                        },
+
+                        title: {
+
+                            display: true,
+
+                            text: "Date"
+
+                        }
+
+                    },
+
+                    y: {
+
+
+                            beginAtZero: true,
+
+                            ticks: {
+
+                                precision: 0
+
+                            },
+
+                            title: {
+
+                                display: true,
+
+                                text: "Unique Security Events"
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
+
+
+    const attackCanvas =
+        document.getElementById("attackChart");
+
+
+    if (attackCanvas) {
+
+        if (attackLabels.length === 0) {
+
+            const parent =
+                attackCanvas.parentElement;
+
+            parent.innerHTML = `
+                <div class="empty-chart-state">
+                    No attack distribution available
+                </div>
+            `;
+
+        } else {
+
+            new Chart(attackCanvas, {
+
+                type: "doughnut",
+
+                data: {
+
+                    labels: attackLabels,
+
+                    datasets: [{
+
+                        label: "Detected Threats",
+
+                        data: attackValues,
+
+                        borderWidth: 1
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+
+                    cutout: "58%",
+
+
+                    plugins: {
+
+                        legend: {
+
+                            position: "bottom",
+
+                            labels: {
+
+                                padding: 18,
+
+                                usePointStyle: true
+
+                            }
+
+                        },
+
+
+                        tooltip: {
+
+                            callbacks: {
+
+                                label: function(context) {
+
+                                    const total =
+                                        context.dataset.data.reduce(
+                                            function(sum, value) {
+                                                return sum + value;
+                                            },
+                                            0
+                                        );
+
+                                    const value =
+                                        context.parsed;
+
+                                    const percentage =
+                                        total > 0
+                                            ? ((value / total) * 100).toFixed(1)
+                                            : "0.0";
+
+                                    return (
+                                        " " +
+                                        context.label +
+                                        ": " +
+                                        value +
+                                        " (" +
+                                        percentage +
+                                        "%)"
+                                    );
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
+
+</script>
+```

@@ -1,0 +1,15 @@
+log,label
+Failed password for root from 192.168.1.5,Brute Force Attack
+Failed password for admin from 10.0.0.2,Brute Force Attack
+Multiple failed ssh login attempts detected,Brute Force Attack
+sudo command executed by user root,Privilege Escalation
+User gained administrative privileges,Privilege Escalation
+Unauthorized sudo access detected,Privilege Escalation
+malware detected in system file,Malware Activity
+virus scan detected malicious file,Malware Activity
+trojan activity detected,Malware Activity
+System started successfully,Normal Activity
+User login successful,Normal Activity
+SSH connection established,Normal Activity
+Suspicious connection detected from unknown IP,Suspicious Activity
+Unknown process communicating with external server,Suspicious Activity
